@@ -7,11 +7,9 @@
 
 FROM ollama/ollama
 
-# タイムゾーン設定のための環境変数を設定
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
-# モデルを保存するディレクトリを作成
 RUN mkdir -p /root/.ollama/models
 
 COPY models/*.gguf /root/.ollama/models/
@@ -26,6 +24,6 @@ RUN ollama serve &\
 #  sleep 5 &&\
 #  ollama pull huggingface.co/bluepen5805/DeepSeek-R1-Distill-Qwen-14B-Japanese-gguf:Q4_K_M
 #デスクトップPCなどではこの14B日本語ファインチューニングモデルも使える
-#キャッシュの都合でRUN文を分割していますが、実際ビルドしなおしたときにどちらが速いのか不明です。
+#キャッシュの都合でRUN文を分割していますが、実際ビルドしなおしたときに効率的なのかは不明です。
 
 EXPOSE 11434
