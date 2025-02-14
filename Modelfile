@@ -2,7 +2,7 @@
 # To build a new Modelfile based on this, replace FROM with:
 # FROM hf.co/bluepen5805/DeepSeek-R1-Distill-Qwen-14B-Japanese-gguf:Q4_K_M
 
-FROM /root/.ollama/models/DeepSeek-R1-Distill-Qwen-7B-Japanese-Q4_K.gguf
+FROM /root/.ollama/models/DeepSeek-R1-Distill-Qwen-7B-Japanese-Q4_K_M.gguf
 
 TEMPLATE """{{- if .Suffix }}<｜fim▁begin｜>{{ .Prompt }}<｜fim▁hole｜>{{ .Suffix }}<｜fim▁end｜>
 {{- else if .Messages }}
