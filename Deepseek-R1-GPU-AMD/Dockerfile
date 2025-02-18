@@ -1,5 +1,5 @@
 #https://github.com/whyvl/ollama-vulkan/issues/7#issuecomment-2660836871
-FROM --platform=linux/amd64 library/ubuntu:noble as builder
+FROM --platform=linux/arm64 library/ubuntu:noble as builder
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
@@ -8,13 +8,13 @@ ENV VULKAN_VER="${VULKAN_VER_BASE}.0"
 ENV UBUNTU_VERSION="noble"
 
 ENV GOLANG_VERSION="1.22.8"
-ENV GOARCH="amd64"
+ENV GOARCH="arm64"
 ENV CGO_ENABLED=1
 ENV LDFLAGS=-s
 
 # Default mirror was very slow
 RUN \
-    sed -i 's/archive.ubuntu.com/gb.archive.ubuntu.com/g' /etc/apt/sources.list.d/ubuntu.sources
+    sed -i 's/archive.ubuntu.com/ports.ubuntu.com/g' /etc/apt/sources.list.d/ubuntu.sources
 
 RUN \
     apt-get update && \
