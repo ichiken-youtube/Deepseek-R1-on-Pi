@@ -18,7 +18,7 @@ COPY Modelfile /root/.ollama/models/Modelfile
 
 RUN ollama serve &\
   sleep 5 &&\
-  ollama create DeepSeek-R1-Distill-Qwen-7B-Japanese-Q4_K -f /root/.ollama/models/Modelfile
+  ollama create DeepSeek-R1-Distill-Qwen-7B-Japanese-Q4_K_M -f /root/.ollama/models/Modelfile
 
 #RUN ollama serve &\
 #  sleep 5 &&\
