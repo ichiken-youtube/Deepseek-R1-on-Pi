@@ -71,7 +71,7 @@ RUN \
     go build -trimpath -buildmode=pie -o dist/bin/ollama .
 
 
-FROM --platform=linux/amd64 library/ubuntu:noble
+FROM --platform=linux/arm64 library/ubuntu:noble
 RUN \
     apt-get update && \
     apt-get install -y ca-certificates libcap2 libvulkan1 && \
