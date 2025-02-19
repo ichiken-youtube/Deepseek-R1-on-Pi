@@ -2,6 +2,7 @@
 FROM --platform=linux/arm64 library/ubuntu:noble as builder
 
 ENV DEBIAN_FRONTEND="noninteractive"
+ENV TZ=Asia/Tokyo
 
 ENV VULKAN_VER_BASE="1.3.296"
 ENV VULKAN_VER="${VULKAN_VER_BASE}.0"
@@ -28,9 +29,8 @@ RUN \
 
 
 RUN \
-    wget -qO - https://packages.lunarg.com/lunarg-signing-key-pub.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/lunarg-signing-key-pub.gpg && \
-    wget -qO /etc/apt/sources.list.d/lunarg-vulkan-${UBUNTU_VERSION}.list https://packages.lunarg.com/vulkan/${VULKAN_VER_BASE}/lunarg-vulkan-${VULKAN_VER_BASE}-${UBUNTU_VERSION}.list && \
-    apt update && apt install -y vulkan-sdk
+    apt-get install -y libvulkan1 mesa-vulkan-drivers vulkan-tools
+
 
 # Last testet ollama-vulkan commit:
 # 2d443b3dd660a1fd2760d64538512df93648b4bb
